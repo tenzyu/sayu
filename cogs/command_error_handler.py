@@ -1,14 +1,9 @@
-from discord.ext.commands import (
-    Bot,
-    CheckFailure,
-    Cog,
-    CommandError,
-    CommandNotFound,
-    Context,
-)
+from discord.ext.commands import Bot, CheckFailure, Cog, CommandError, CommandNotFound, Context
 
 
-class ErrorHandler(Cog):
+class CommandErrorHandler(Cog):
+    __slots__ = "bot"
+
     def __init__(self, bot: Bot):
         self.bot = bot
 
@@ -21,4 +16,4 @@ class ErrorHandler(Cog):
 
 
 def setup(bot: Bot):
-    bot.add_cog(ErrorHandler(bot))
+    bot.add_cog(CommandErrorHandler(bot))

@@ -3,12 +3,14 @@ from time import monotonic
 from discord.ext.commands import Bot, Cog, Context, command
 
 
-class Utilities(Cog):
+class Ping(Cog):
+    __slots__ = "bot"
+
     def __init__(self, bot: Bot):
         self.bot = bot
 
     @command()
-    async def ping(self, ctx: Context):
+    async def ping(self, ctx: Context) -> None:
         """check the connection and response time"""
         tmp = monotonic()
         msg = await ctx.send("Calculating...")
@@ -17,4 +19,4 @@ class Utilities(Cog):
 
 
 def setup(bot: Bot):
-    bot.add_cog(Utilities(bot))
+    bot.add_cog(Ping(bot))
